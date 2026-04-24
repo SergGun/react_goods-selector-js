@@ -1,8 +1,7 @@
 import 'bulma/css/bulma.css';
 import './App.scss';
 import { useState } from 'react';
-import { Value } from 'sass';
-import classNames from 'classnames';  
+import classNames from 'classnames';
 
 export const goods = [
   'Dumplings',
@@ -18,10 +17,10 @@ export const goods = [
 ];
 
 export const App = () => {
-  let [goodsValue, setGoodsValue] = useState('Jam');
+  const [goodsValue, setGoodsValue] = useState('Jam');
 
   return (
-   <main className="section container">
+    <main className="section container">
       {goodsValue === '' ? (
         <h1 className="title is-flex is-align-items-center">
           No goods selected
@@ -38,11 +37,12 @@ export const App = () => {
         </h1>
       )}
 
-    <table className="table">
-      <tbody>
-       {goods.map(good => {
+      <table className="table">
+        <tbody>
+          {goods.map(good => {
             const isSelected = good === goodsValue;
-              return (
+
+            return (
               <tr
                 key={good}
                 data-cy="Good"
@@ -55,13 +55,13 @@ export const App = () => {
                     data-cy={isSelected ? 'RemoveButton' : 'AddButton'}
                     type="button"
                     className={classNames('button', { 'is-info': isSelected })}
-                    onClick={() => setGoodsValue  (isSelected ? '' : good)}
+                    onClick={() => setGoodsValue(isSelected ? '' : good)}
                   >
                     {isSelected ? '-' : '+'}
                   </button>
                 </td>
 
-             <td data-cy="GoodTitle" className="is-vcentered">
+                <td data-cy="GoodTitle" className="is-vcentered">
                   {good}
                 </td>
               </tr>
